@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-# Install nginx and start it
-apt-get -y install nginx
-service nginx start
-ufw allow 'Nginx HTTP'
-echo "Holberton School\n" | sudo tee /var/www/html/index.nginx-debian.html
-service nginx restart
+# Installs Nginx with the following configurations:
+#+    Listens on port 80.
+#+    Returns a page containing "Holberton School" when queried
+#++    at the root with a curl GET reprintf %s "
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo 'Holberton School' > /var/www/html/index.nginx-debian.html
+sudo sed -i '38i\rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo service nginx start
