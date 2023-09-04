@@ -11,8 +11,8 @@ frontend kennynku.tech
 
 backend web_servers
         balance roundrobin
-        server 268362-web-01 35.168.2.196
-        server 268362-web-02 34.224.94.141
+        server 268362-web-01 35.168.2.196:80
+        server 268362-web-02 34.224.94.141:80
 ' >> /etc/haproxy/haproxy.cfg
 
 service haproxy restart
